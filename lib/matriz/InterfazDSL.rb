@@ -1,11 +1,9 @@
 class MatrixDSL
-	attr_accessor :option, :operand
+	attr_accessor :option, :operandor, :tipo, :mostrar
 
   		def initialize(operacion, &block)
 			@operacion = operacion
-    	
-			self.option = []
-    			self.operad = []
+    			@operador = []
     			@tipo = 'densa'
   			@mostrar = 'console'  
 
@@ -17,17 +15,16 @@ class MatrixDSL
       			#	end
     			#end
 			
-			puts self
   		end
   
   	def to_s
  		salida = "\n #{@operacion} \n"
 		
-		case operacion
-      			when "Suma" then salida << " #{(operador[0]+operandor[1]).to_s}\n"
-      			when "Resta" then salida << " #{(operador[0]+operandor[1]).to_s}\n"
-      			when "Producto" then salida << " #{(operador[0]+operandor[1]).to_s}\n"        
+		case @operacion
+      			when "suma" then salida << "\n#{(@operador[0]+@operador[1]).to_s}\n"
+      			when "producto" then salida << "\n#{(@operador[0]*@operador[1]).to_s}\n"        
     		end 
+	
 		salida  
   	end
 
@@ -43,8 +40,8 @@ class MatrixDSL
     		array.each { |x| x.each { |y| vector << y } }
  
     		case @tipo
-      			when "densa" then operandor << Matriz.new(array.size,array[0].size,aux)
-      			when "dispersa" then operandor << Matriz_dispersa.new(array.size,array[0].size,aux,"COO")
+      			when "densa" then @operador << Matrix.new(array.size,array[0].size,vector)
+      			when "dispersa" then @operador << Matrix_dispersa.new(array.size,array[0].size,vector,"COO")
     		end   			
 				
 		
