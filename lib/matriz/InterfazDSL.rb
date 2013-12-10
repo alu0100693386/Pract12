@@ -1,22 +1,46 @@
+# = DSL PARA MATRIZ DENSA Y DISPERSA
+# Author::   Grupo M 24
+# Copyright:: Copyright (c) 2013 
+# License::   Misma que Ruby
+
+# DSL para trabajar con matrices
+
 class MatrixDSL
-	attr_accessor :option, :operandor, :tipo, :mostrar
+	# * +option+ - opcion
+	attr_accessor :option
+	
+	# * +operador+ - operador 
+	attr_accessor :operador
+	
+	# * +tipo+ - tipo de la matriz
+	attr_accessor :tipo
+	
+	# * +mostrar+ - por donde se muestra
+	attr_accessor :mostrar
 
-  		def initialize(operacion, &block)
-			@operacion = operacion
-    			@operador = []
-    			@tipo = 'densa'
-  			@mostrar = 'console'  
+        # === Descripcion
+        #  Constructor de la clase
+        # ==== Atributos
+        #
+        # * +operacion+ - operacion que se va a realizar
+  	def initialize(operacion, &block)
+		@operacion = operacion
+    		@operador = []
+    		@tipo = 'densa'
+  		@mostrar = 'console'  
 
-    			#if block_given?  
-      			#	if block.arity == 1
-        		#		yield self
-      			#	else
-        				instance_eval &block 
-      			#	end
-    			#end
-			
-  		end
-  
+    		#if block_given?  
+      		#	if block.arity == 1
+		#		yield self
+      		#	else
+				instance_eval &block 
+      		#	end
+    		#end
+		
+  	end
+ 
+        # === Descripcion
+        #  Devuelve un string con el resultado de operar la operacion especificada
   	def to_s
  		salida = "\n #{@operacion} \n"
 		
@@ -28,6 +52,8 @@ class MatrixDSL
 		salida  
   	end
 
+        # === Descripcion
+        #  Metodo para establecer las distintas opciones en @tipo y @mostrar
   	def option(opcion)
 		case opcion
       			when 'densa','dispersa' then @tipo = opcion
@@ -35,6 +61,11 @@ class MatrixDSL
     		end
   	end
 
+        # === Descripcion
+        #  Metodo para añadir matrices para usar como operadores
+        # ==== Atributos
+        #
+        # * +array+ - array bidimensional con la matriz
   	def operand(array) 
 		vector = []
     		
