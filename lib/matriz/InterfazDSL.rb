@@ -37,8 +37,19 @@ class MatrixDSL
 
   	def operand(array) 
 		vector = []
-    		array.each { |x| x.each { |y| vector << y } }
- 
+    		
+    		for i in 0...array.size
+		   vector.push(array[i])
+		end
+		
+    		#otra forma
+ 		#for i in 0...array.size
+ 			#for j in 0...array[i].size
+   				#vector.push(array[i][j])
+   			#end
+		#end
+		
+		
     		case @tipo
       			when "densa" then @operador << Matrix.new(array.size,array[0].size,vector)
       			when "dispersa" then @operador << Matrix_dispersa.new(array.size,array[0].size,vector,"COO")
