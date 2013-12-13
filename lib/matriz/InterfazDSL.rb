@@ -67,11 +67,13 @@ class MatrixDSL
         #
         # * +array+ - array bidimensional con la matriz
   	def operand(array) 
+		
 		vector = []
-    		
-    		for i in 0...array.size
-		   vector.push(array[i])
-		end
+		array.each { |x| x.each { |y| vector << y } }
+
+    		#for i in 0...array.size
+		#   vector.push(array[i])
+		#end
 		
     		#otra forma
  		#for i in 0...array.size
@@ -83,7 +85,7 @@ class MatrixDSL
 		
     		case @tipo
       			when "densa" then @operador << Matrix.new(array.size,array[0].size,vector)
-      			when "dispersa" then @operador << Matrix_dispersa.new(array.size,array[0].size,vector,"COO")
+      			when "dispersa" then @operador << MatrixDispersa.new(array.size,array[0].size,vector,"COO")
     		end   			
 				
 		

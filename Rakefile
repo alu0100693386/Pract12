@@ -12,6 +12,7 @@ task :rdoc do
   sh "rdoc"
 end
 
+=begin 
 namespace :gemnasium do
   require 'gemnasium'
 
@@ -32,3 +33,4 @@ namespace :gemnasium do
     end
   end
 end
+=end

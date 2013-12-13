@@ -72,3 +72,25 @@ describe Matriz
 			end
 		end
 
+		describe "Prueba DSL \n" do
+			it "Se debe poder realizar una suma por interfaz DSL" do
+				@a = MatrixDSL.new("suma") do 
+  					option "densa"
+  					operand [[1,2,3],[4,5,6],[7,8,9]]  
+  					operand [[1,1,1],[1,1,1],[1,1,1]]  
+				end
+				
+				(@a).to_s.should eq("\n suma \n\n[2 3 4] \n[5 6 7] \n[8 9 10] \n\n")
+			end
+			
+			it "Se debe poder realizar una multiplicacion por interfaz DSL" do
+				@a = MatrixDSL.new("producto") do
+                                        option "dispersa"
+                                        operand [[1,2,3],[4,5,6],[7,8,9]]
+                                        operand [[1,1,1],[1,1,1],[1,1,1]]
+                                end
+
+                                (@a).to_s.should eq("\n producto \n\n[6 6 6] \n[15 15 15] \n[24 24 24] \n\n")				
+			end
+		end
+
